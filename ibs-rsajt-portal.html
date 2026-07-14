@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Internal IBS RSAJT</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --navy:#0F4C81;
+    --navy-dark:#0B3A63;
+    --skyblue:#EAF4FF;
+    --white:#FFFFFF;
+    --graybg:#F5F7FA;
+    --accent:#28A745;
+  }
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--graybg);color:#1f2937;}
+  .navy{background:var(--navy);}
+  .navy-dark{background:var(--navy-dark);}
+  .text-navy{color:var(--navy);}
+  .bg-skyblue{background:var(--skyblue);}
+  .accent{color:var(--accent);}
+  .bg-accent{background:var(--accent);}
+  .section-title{font-size:1.75rem;font-weight:800;color:var(--navy);}
+  .card{background:#fff;border-radius:16px;box-shadow:0 4px 16px rgba(15,76,129,.08);transition:.25s ease;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(15,76,129,.16);}
+  .nav-link{position:relative;}
+  .nav-link:after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:#fff;transition:.25s;}
+  .nav-link:hover:after{width:100%;}
+  .hero-bg{background:linear-gradient(135deg,var(--navy) 0%,#1a67ab 100%);}
+  .chart-line{width:2px;background:var(--navy);margin:0 auto;}
+  .fade-img{transition:opacity 1s ease-in-out;}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:var(--navy);border-radius:8px;}
+  .avatar-ph{background:linear-gradient(135deg,var(--navy),#3b82c4);}
+  .hidden-search{display:none !important;}
+</style>
+</head>
+<body class="scroll-smooth">
+
+<!-- ============ HEADER ============ -->
+<header id="home" class="navy sticky top-0 z-50 shadow-lg" style="background-image:linear-gradient(135deg,rgba(15,76,129,.96),rgba(15,76,129,.88)); background-size:cover; background-position:center;">
+  <!-- Ganti background-image di style header ini dengan url('foto-anda.jpg') untuk kustomisasi -->
+  <div class="max-w-7xl mx-auto px-4 py-3">
+    <div class="flex items-center justify-between flex-wrap gap-3">
+      <div class="flex items-center gap-3">
+        <!-- LOGO: ganti src di bawah dengan logo RS yang akan diupload -->
+        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0">
+          <img id="logoImg" src="https://ui-avatars.com/api/?name=IBS+RSAJT&background=0F4C81&color=fff&bold=true" alt="Logo RSAJT" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <h1 class="text-white font-extrabold text-lg leading-tight">Instalasi Bedah Sentral RSAJT</h1>
+          <p class="text-blue-100 text-xs">Portal Informasi Internal • Rumah Sakit Adhyaksa Jawa Timur</p>
+        </div>
+      </div>
+      <button id="menuBtn" class="md:hidden text-white text-2xl">☰</button>
+      <nav id="navMenu" class="hidden md:flex gap-6 text-white text-sm font-medium">
+        <a href="#profil" class="nav-link">Profil Ruangan</a>
+        <a href="#struktur" class="nav-link">Struktur Organisasi</a>
+        <a href="#tim" class="nav-link">Tim IBS</a>
+        <a href="#layanan" class="nav-link">Layanan</a>
+        <a href="#dokumen" class="nav-link">Dokumen & SOP</a>
+        <a href="#kontak" class="nav-link">Kontak</a>
+      </nav>
+    </div>
+    <!-- mobile nav -->
+    <nav id="navMenuMobile" class="hidden md:hidden flex flex-col gap-2 text-white text-sm font-medium mt-3 pb-2">
+      <a href="#profil" class="py-1">Profil Ruangan</a>
+      <a href="#struktur" class="py-1">Struktur Organisasi</a>
+      <a href="#tim" class="py-1">Tim IBS</a>
+      <a href="#layanan" class="py-1">Layanan</a>
+      <a href="#dokumen" class="py-1">Dokumen & SOP</a>
+      <a href="#kontak" class="py-1">Kontak</a>
+    </nav>
+    <div class="mt-3">
+      <div class="relative max-w-xl">
+        <input id="globalSearch" type="text" placeholder="🔍 Cari dokumen, SOP, formulir, jadwal operasi, nama petugas..." class="w-full rounded-full px-5 py-2.5 text-sm outline-none shadow focus:ring-2 focus:ring-accent">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero-bg text-white">
+  <div class="max-w-6xl mx-auto px-4 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Selamat Datang di Portal Internal IBS RSAJT</h2>
+    <p class="max-w-2xl mx-auto text-blue-100 mb-10">Portal digital untuk mendukung pelayanan operasi, pengelolaan dokumen, akreditasi, dan koordinasi petugas Instalasi Bedah Sentral RSAJT.</p>
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
+      <a href="#dokumen" class="card bg-white text-navy rounded-xl py-4 px-2 flex flex-col items-center gap-1 text-xs font-semibold">📋 <span>SOP IBS</span></a>
+      <a href="#dokumen" class="card bg-white text-navy rounded-xl py-4 px-2 flex flex-col items-center gap-1 text-xs font-semibold">📁 <span>Dok. Akreditasi</span></a>
+      <a href="#antrian" class="card bg-white text-navy rounded-xl py-4 px-2 flex flex-col items-center gap-1 text-xs font-semibold">📅 <span>Jadwal Operasi</span></a>
+      <a href="#tim" class="card bg-white text-navy rounded-xl py-4 px-2 flex flex-col items-center gap-1 text-xs font-semibold">👨‍⚕️ <span>Data Petugas</span></a>
+      <a href="#layanan" class="card bg-white text-navy rounded-xl py-4 px-2 flex flex-col items-center gap-1 text-xs font-semibold">📊 <span>Indikator Mutu</span></a>
+      <a href="#kontak" class="card bg-white text-navy rounded-xl py-4 px-2 flex flex-col items-center gap-1 text-xs font-semibold">📞 <span>Kontak Ruangan</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROFIL RUANGAN ============ -->
+<section id="profil" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="section-title text-center mb-10">Profil Ruangan</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="card p-8">
+      <h3 class="text-xl font-bold text-navy mb-3">🎯 Visi</h3>
+      <p class="text-gray-600 leading-relaxed">Menjadi pusat layanan kesehatan unggulan yang andal dan mendukung tugas yustisial penegakan hukum di bidang kesehatan.</p>
+    </div>
+    <div class="card p-8">
+      <h3 class="text-xl font-bold text-navy mb-3">🧭 Misi</h3>
+      <ul class="text-gray-600 space-y-2 leading-relaxed">
+        <li class="flex gap-2"><span class="accent">✓</span> Mendukung tugas dan fungsi kejaksaan dalam proses penegakan hukum melalui kesehatan yustisial.</li>
+        <li class="flex gap-2"><span class="accent">✓</span> Memberikan pelayanan kesehatan yang unggul, terjangkau, dan diandalkan bagi masyarakat luas.</li>
+        <li class="flex gap-2"><span class="accent">✓</span> Meningkatkan kualitas dan kompetensi SDM yang profesional.</li>
+        <li class="flex gap-2"><span class="accent">✓</span> Menerapkan tata kelola rumah sakit yang berakhlak.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STRUKTUR ORGANISASI ============ -->
+<section id="struktur" class="bg-skyblue py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="section-title text-center mb-10">Struktur Organisasi</h2>
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="card p-6 flex items-center gap-4">
+        <img src="https://ui-avatars.com/api/?name=Dimas+Arya&background=0F4C81&color=fff&size=128" class="w-20 h-20 rounded-full object-cover" alt="Kepala Instalasi">
+        <div>
+          <p class="text-xs uppercase tracking-wide text-gray-400 font-semibold">Kepala Instalasi IBS RSAJT</p>
+          <p class="font-bold text-navy text-lg">dr. Muhammad Dimas Arya, Sp.OT</p>
+        </div>
+      </div>
+      <div class="card p-6 flex items-center gap-4">
+        <img src="https://ui-avatars.com/api/?name=Donal+Aprizal&background=0F4C81&color=fff&size=128" class="w-20 h-20 rounded-full object-cover" alt="Kepala Ruangan">
+        <div>
+          <p class="text-xs uppercase tracking-wide text-gray-400 font-semibold">Kepala Ruangan IBS RSAJT</p>
+          <p class="font-bold text-navy text-lg">Donal Aprizal, AMd. Kep</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flowchart modern biru-putih -->
+    <div class="flex flex-col items-center">
+      <div class="card px-8 py-4 bg-navy text-white font-bold rounded-xl shadow-lg">Kepala Ruangan</div>
+      <div class="chart-line h-8"></div>
+      <div class="w-full max-w-md h-[2px] bg-navy relative">
+        <div class="absolute left-0 top-0 chart-line h-8"></div>
+        <div class="absolute right-0 top-0 chart-line h-8"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-10 w-full max-w-md">
+        <div class="flex flex-col items-center">
+          <div class="card px-6 py-4 border-2 border-navy text-navy font-bold rounded-xl w-full text-center">Tim Anestesi</div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="card px-6 py-4 border-2 border-navy text-navy font-bold rounded-xl w-full text-center">Tim Bedah</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANTRIAN OPERASI HARI INI ============ -->
+<section id="antrian" class="max-w-6xl mx-auto px-4 py-16">
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-2">
+    <div>
+      <h2 class="section-title">Antrian Pasien Operasi</h2>
+      <p id="todayDate" class="text-gray-500 font-medium mt-1"></p>
+    </div>
+    <a href="https://docs.google.com/spreadsheets/d/17ubGDas9Y029z4LfZGuaG6XZxtfWCDD5/edit?usp=drive_link" target="_blank" class="bg-accent text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow hover:opacity-90">Buka Google Sheet ↗</a>
+  </div>
+  <div class="card overflow-hidden">
+    <iframe src="https://docs.google.com/spreadsheets/d/17ubGDas9Y029z4LfZGuaG6XZxtfWCDD5/preview" class="w-full h-[480px]" loading="lazy"></iframe>
+  </div>
+  <p class="text-xs text-gray-400 mt-3">*Jika tabel tidak muncul, pastikan Google Sheet sudah diatur ke "Siapa saja yang memiliki link dapat melihat" pada menu Bagikan.</p>
+</section>
+
+<!-- ============ JADWAL DINAS ============ -->
+<section class="bg-skyblue py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-2">
+      <h2 class="section-title">Jadwal Dinas Petugas</h2>
+      <a href="https://docs.google.com/spreadsheets/d/1uKNTdj_G8JVdXDArT24yFZzsYovEa73lynw1xYIAWrs/edit?usp=drive_link" target="_blank" class="bg-accent text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow hover:opacity-90">Buka Google Sheet ↗</a>
+    </div>
+    <div class="card overflow-hidden">
+      <iframe src="https://docs.google.com/spreadsheets/d/1uKNTdj_G8JVdXDArT24yFZzsYovEa73lynw1xYIAWrs/preview" class="w-full h-[480px]" loading="lazy"></iframe>
+    </div>
+    <p class="text-xs text-gray-400 mt-3">*Tabel diambil langsung dari Google Sheet — setiap perubahan di sheet otomatis tampil di sini.</p>
+  </div>
+</section>
+
+<!-- ============ TIM IBS ============ -->
+<section id="tim" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="section-title text-center mb-3">Tim IBS RSAJT</h2>
+  <p class="text-center text-gray-500 mb-10">Klik kartu nama untuk membuka biodata petugas.</p>
+
+  <!-- Statistik -->
+  <div class="grid grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
+    <div class="card text-center py-6">
+      <p class="text-2xl">👨‍⚕️</p>
+      <p class="text-2xl font-extrabold text-navy" id="statBedah">40</p>
+      <p class="text-xs text-gray-500">Tim Bedah</p>
+    </div>
+    <div class="card text-center py-6">
+      <p class="text-2xl">🩺</p>
+      <p class="text-2xl font-extrabold text-navy" id="statAnestesi">6</p>
+      <p class="text-xs text-gray-500">Tim Anestesi</p>
+    </div>
+    <div class="card text-center py-6">
+      <p class="text-2xl">🏥</p>
+      <p class="text-2xl font-extrabold text-navy">1</p>
+      <p class="text-xs text-gray-500">Kepala Ruangan</p>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-bold text-navy mb-5">Tim Anestesi</h3>
+  <div id="anestesiGrid" class="grid grid-cols-2 md:grid-cols-3 gap-5 mb-14"></div>
+
+  <h3 class="text-xl font-bold text-navy mb-5">Tim Bedah</h3>
+  <div id="bedahGrid" class="grid grid-cols-2 md:grid-cols-4 gap-5"></div>
+</section>
+
+<!-- ============ LAYANAN ============ -->
+<section id="layanan" class="bg-skyblue py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="section-title text-center mb-10">Layanan IBS</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card overflow-hidden">
+        <div class="h-32 avatar-ph flex items-center justify-center text-4xl">😷</div>
+        <div class="p-4">
+          <h4 class="font-bold text-navy">Spesialis Anestesi & Terapi Intensif</h4>
+          <p class="text-sm text-gray-500 mt-1">Pelayanan pembiusan dan terapi intensif.</p>
+          <p class="text-sm font-semibold text-navy mt-3">dr. Junjungan Kristianto Manurung, Sp.An-TI, M.Ked.Klin</p>
+        </div>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="h-32 avatar-ph flex items-center justify-center text-4xl">🦴</div>
+        <div class="p-4">
+          <h4 class="font-bold text-navy">Bedah Orthopedi</h4>
+          <p class="text-sm text-gray-500 mt-1">Pelayanan operasi tulang dan muskuloskeletal.</p>
+          <p class="text-sm font-semibold text-navy mt-3">dr. Muhammad Dimas Arya, Sp.OT</p>
+        </div>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="h-32 avatar-ph flex items-center justify-center text-4xl">🏥</div>
+        <div class="p-4">
+          <h4 class="font-bold text-navy">Bedah Umum</h4>
+          <p class="text-sm text-gray-500 mt-1">Pelayanan operasi umum sesuai kebutuhan pasien.</p>
+          <p class="text-sm font-semibold text-navy mt-3">dr. I Made Ary Adidharma, Sp.B, Med.Klin</p>
+        </div>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="h-32 avatar-ph flex items-center justify-center text-4xl">👶</div>
+        <div class="p-4">
+          <h4 class="font-bold text-navy">Bedah Obgyn</h4>
+          <p class="text-sm text-gray-500 mt-1">Pelayanan operasi kebidanan dan kandungan.</p>
+          <p class="text-sm font-semibold text-navy mt-3">dr. Henny Sugiharto Wonodihardjo, Sp.OG</p>
+        </div>
+      </div>
+    </div>
+    <p class="text-xs text-gray-400 mt-4 text-center">*Ganti div berlatar biru (ikon) pada tiap kartu dengan foto dokter Anda — ganti class "avatar-ph" dengan tag &lt;img src="foto-dokter.jpg"&gt;.</p>
+  </div>
+</section>
+
+<!-- ============ DOKUMEN & SOP ============ -->
+<section id="dokumen" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="section-title text-center mb-10">Dokumen & SOP — Akses Cepat</h2>
+  <div id="dokumenGrid" class="grid grid-cols-2 md:grid-cols-4 gap-5"></div>
+</section>
+
+<!-- ============ FOTO KEGIATAN ============ -->
+<section class="bg-skyblue py-16">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="section-title text-center mb-10">Foto Kegiatan IBS RSAJT</h2>
+    <div class="card relative overflow-hidden h-80 md:h-[420px]">
+      <img id="galleryImg" src="" alt="Foto Kegiatan" class="fade-img w-full h-full object-cover">
+      <div class="absolute bottom-3 right-4 bg-black/50 text-white text-xs px-3 py-1 rounded-full" id="galleryCounter">1 / 20</div>
+    </div>
+    <p class="text-xs text-gray-400 mt-3 text-center">*Ganti array <code>galleryPhotos</code> di kode JavaScript dengan 20 link/foto kegiatan yang akan Anda upload secara manual.</p>
+  </div>
+</section>
+
+<!-- ============ KONTAK ============ -->
+<section id="kontak" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="section-title text-center mb-10">Hubungi Kami</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <a href="https://wa.me/6285188377213" target="_blank" class="card p-8 text-center hover:bg-green-50">
+      <p class="text-3xl mb-2">📱</p>
+      <p class="font-bold text-navy">WhatsApp</p>
+      <p class="text-sm text-gray-500 mt-1">0851-8837-7213</p>
+    </a>
+    <a href="mailto:okrsadhyaksajawatimur@gmail.com" class="card p-8 text-center hover:bg-blue-50">
+      <p class="text-3xl mb-2">📧</p>
+      <p class="font-bold text-navy">Email</p>
+      <p class="text-sm text-gray-500 mt-1">okrsadhyaksajawatimur@gmail.com</p>
+    </a>
+    <div class="card p-8 text-center">
+      <p class="text-3xl mb-2">📍</p>
+      <p class="font-bold text-navy">Lokasi</p>
+      <p class="text-sm text-gray-500 mt-1">Lantai 3 Rumah Sakit Adhyaksa Jawa Timur</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="navy-dark text-blue-100 py-10">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <p class="font-bold text-white text-lg">Instalasi Bedah Sentral (IBS) RSAJT</p>
+    <p class="text-sm mt-1">Portal Informasi Internal Rumah Sakit Adhyaksa Jawa Timur</p>
+    <p class="text-xs mt-4 text-blue-300">© 2026 IBS RSAJT — Internal Use Only</p>
+  </div>
+</footer>
+
+<!-- Modal Biodata -->
+<div id="bioModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[999] p-4">
+  <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center">
+    <img id="bioImg" src="" class="w-24 h-24 rounded-full mx-auto object-cover mb-4" alt="">
+    <h3 id="bioName" class="font-bold text-navy text-lg mb-4"></h3>
+    <a id="bioLink" href="#" target="_blank" class="bg-navy text-white px-5 py-2.5 rounded-full text-sm font-semibold inline-block">Buka Biodata di Drive ↗</a>
+    <button onclick="closeBio()" class="block mx-auto mt-4 text-sm text-gray-400">Tutup</button>
+  </div>
+</div>
+
+<script>
+// ===== Tanggal hari ini =====
+document.getElementById('todayDate').textContent = new Date().toLocaleDateString('id-ID',{weekday:'long', day:'numeric', month:'long', year:'numeric'});
+
+// ===== Menu mobile =====
+document.getElementById('menuBtn').addEventListener('click', ()=>{
+  document.getElementById('navMenuMobile').classList.toggle('hidden');
+});
+
+// ===== Data: Tim Anestesi =====
+const anestesiTeam = [
+  {name:"Ns. Dedy Kurniadi, S.Kep.", link:"https://drive.google.com/file/d/1a5ruGB84MPcJKP7l3RiAocJDx1r6V67P/view?usp=drive_link"},
+  {name:"Ilhami Yuni Nur Fajri, S.Tr.Kes.", link:""},
+  {name:"Jeritrisza Putra, S.Tr.Kes.", link:""},
+  {name:"Vania Raissa Camaline, S.Tr.Kes.", link:""},
+  {name:"Abdul Kholid, A.Md.Kep.", link:""},
+  {name:"Dian Yasin Abdillah, A.Md.Kep.", link:""},
+];
+
+// ===== Data: Tim Bedah =====
+const bedahTeam = [
+  {name:"Donal Aprizal, A.Md.Kep", link:"https://drive.google.com/file/d/1aDNyvoLqHnKS-qbE2exNdEr2rM4OgiuE/view?usp=drive_link"},
+  {name:"Ar Raafi'u Majiid, A.Md.Kep", link:""},
+  {name:"Salsa Arumvita Contantia, A.Md.Kep.", link:""},
+  {name:"Aisyah Rachmasari Ammadin, A.Md.Kep.", link:""},
+  {name:"Ricky Agustio, A.Md.Kep.", link:""},
+  {name:"Fikri Aziz, A.Md.Kep.", link:""},
+  {name:"Vivi Norma Yunita, A.Md.Kep.", link:""},
+  {name:"Sindy Septiana Eka Putri, A.Md.Kep.", link:""},
+  {name:"Subangkit, A.Md.Kep.", link:""},
+  {name:"Tya Zaharani, A.Md.Kep.", link:""},
+  {name:"Mochamad Rizal Oktavian, A.Md.Kep.", link:""},
+  {name:"Bahruddin Ansori, A.Md.Kep.", link:""},
+  {name:"Zahrotu Hidayatullah, A.Md.Kep.", link:""},
+  {name:"Wiga Sesaraya, A.Md.Kep.", link:""},
+  {name:"Aulia Marretina Purwaningrum, A.Md.Kep.", link:""},
+  {name:"Veren Aurelli Nasywa, A.Md.Kep.", link:""},
+  {name:"Wahyu Sandy Baskoro, A.Md.Kep.", link:""},
+  {name:"Andriana Kiki Djunaedi, A.Md.Kep.", link:""},
+  {name:"Shinta Rahmawati, A.Md.Kep.", link:""},
+  {name:"Roudotul Muatdina, A.Md.Kep.", link:""},
+  {name:"Rico Indra Setyawan, A.Md.Kep.", link:""},
+  {name:"Nuryana Rachmawati, A.Md.Kep.", link:""},
+  {name:"Lazuardi Nabiel Izzulhaq, A.Md.Kep.", link:""},
+  {name:"Irham, A.Md.Kep.", link:""},
+  {name:"Pungki Wahyuni Djadiati, A.Md.Kep.", link:""},
+  {name:"Rizalul Faqih, S.Kep.Ners", link:""},
+  {name:"Siti Wahyuni, A.Md", link:""},
+  {name:"Adhi Susanto, A.Md.Kep.", link:""},
+  {name:"Tristi Martanti, A.Md.Kep.", link:""},
+  {name:"Sabrina Maharani Arya Putri, A.Md.Kep.", link:""},
+  {name:"Wahyu Faisal Putra, A.Md.Kep.", link:""},
+  {name:"Ajeng Safitri, A.Md.Kep.", link:""},
+  {name:"S. Taufikur Rahman, A.Md.Kep.", link:""},
+  {name:"Vinna Putri Pramesti Rahayu, A.Md.Kep.", link:""},
+  {name:"Januardi Wisnu Prihantoro, AMK", link:""},
+  {name:"Ilham Nur Alfian, A.Md.Kep.", link:""},
+  {name:"Fadhila Setiawan, A.Md.Kep.", link:""},
+  {name:"Risma Ery Khoirunnisa, A.Md.Kep.", link:""},
+  {name:"Parantika Trimonalisa, A.Md.Kep.", link:""},
+  {name:"Figur Satria, A.Md.Kep.", link:""},
+  {name:"Safrizal Donkinol Wali, A.Md.Kep.", link:""},
+];
+document.getElementById('statBedah').textContent = bedahTeam.length;
+document.getElementById('statAnestesi').textContent = anestesiTeam.length;
+
+function avatarUrl(name){
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0F4C81&color=fff&size=200&bold=true`;
+}
+
+function renderTeam(containerId, data){
+  const el = document.getElementById(containerId);
+  el.innerHTML = data.map((p,i)=>`
+    <button data-name="${p.name.toLowerCase()}" onclick='openBio(${i},"${containerId}")' class="card overflow-hidden text-left team-card">
+      <div class="h-28 bg-cover bg-center" style="background-image:url('${avatarUrl(p.name)}')"></div>
+      <div class="p-3">
+        <p class="text-sm font-semibold text-navy leading-tight">${p.name}</p>
+        <p class="text-[11px] text-gray-400 mt-1">${p.link ? "Klik untuk lihat biodata" : "Biodata belum tersedia"}</p>
+      </div>
+    </button>
+  `).join('');
+}
+renderTeam('anestesiGrid', anestesiTeam);
+renderTeam('bedahGrid', bedahTeam);
+
+function openBio(i, which){
+  const p = (which === 'anestesiGrid') ? anestesiTeam[i] : bedahTeam[i];
+  document.getElementById('bioImg').src = avatarUrl(p.name);
+  document.getElementById('bioName').textContent = p.name;
+  const linkEl = document.getElementById('bioLink');
+  if(p.link){
+    linkEl.href = p.link;
+    linkEl.classList.remove('hidden');
+    linkEl.textContent = "Buka Biodata di Drive ↗";
+  } else {
+    linkEl.href = "#";
+    linkEl.textContent = "Biodata belum tersedia";
+  }
+  const modal = document.getElementById('bioModal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+function closeBio(){
+  const modal = document.getElementById('bioModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
+// ===== Dokumen & SOP =====
+const dokumen = [
+  {title:"Data Petugas Kamar Operasi", link:"https://drive.google.com/open?id=12sYxHpmaVE1vEfjUcJgSvztp9_vjG9VI&usp=drive_copy", icon:"👥"},
+  {title:"Dokumen Akreditasi (Terisi)", link:"https://drive.google.com/open?id=1-zJItyawTXiTzw234uAeq38N6U3eR8GL&usp=drive_copy", icon:"📁"},
+  {title:"SOP IBS RSAJT", link:"https://drive.google.com/open?id=1MhLB1YgnBEQmSVM19ruycqnClB8OlCzx&usp=drive_copy", icon:"📋"},
+  {title:"Formulir IBS", link:"https://drive.google.com/open?id=1VoTVb3KoXPu6IpAP0d36XrGiz5xnk4e9&usp=drive_copy", icon:"📝"},
+  {title:"Pedoman IBS RSAJT", link:"https://drive.google.com/open?id=1eCVabpQcBt5pBwXNpRl7j60dm92-2iK_&usp=drive_copy", icon:"📘"},
+  {title:"Indikator Mutu Pelayanan IBS", link:"https://drive.google.com/open?id=1k-k7w90Fa9S87cSAR1STqJ0De0I6sUVS&usp=drive_copy", icon:"📊"},
+  {title:"Jadwal Petugas IBS", link:"https://drive.google.com/open?id=12YWdsqrjKKQ4mzwobCYQU-qnfcxaBlv0&usp=drive_copy", icon:"🗓️"},
+  {title:"SPK, RKK + URGAS Petugas IBS", link:"https://drive.google.com/open?id=18fpePYg4jcTqsNapJhRwYjq-EsYx366S&usp=drive_copy", icon:"📄"},
+  {title:"Denah IBS RSAJT", link:"https://drive.google.com/open?id=12pYXoIa0764qVI6R11MDyH8UM3GO99B7&usp=drive_copy", icon:"🗺️"},
+  {title:"Hand Over Perawat IBS", link:"https://drive.google.com/open?id=1CxsD_GcB-IyErYdK8_acuwZ91nOGReNR&usp=drive_copy", icon:"🔄"},
+  {title:"Materi Akreditasi", link:"https://drive.google.com/open?id=1mXY02uczjoMyKc4u0qA0LD__IVnteGr-&usp=drive_copy", icon:"🎓"},
+  {title:"Struktur Organisasi IBS RSAJT", link:"https://drive.google.com/open?id=1-yTskjzWYz9NW9QDqutxqCplV1yMUw0r&usp=drive_copy", icon:"🏢"},
+  {title:"Foto Simadya IBS RSAJT", link:"https://drive.google.com/open?id=1sWF8GLeNr_TPA7EjrVLajgA1OumF_Hz7&usp=drive_copy", icon:"🖼️"},
+  {title:"Jadwal Operasi IBS RSAJT", link:"https://drive.google.com/open?id=1pB0Zz9H2MoDsTfVt1UxpyN0fYfcu9Xkg&usp=drive_copy", icon:"📅"},
+];
+document.getElementById('dokumenGrid').innerHTML = dokumen.map(d=>`
+  <a href="${d.link}" target="_blank" data-name="${d.title.toLowerCase()}" class="card p-5 flex flex-col items-center text-center gap-2 doc-card">
+    <span class="text-3xl">${d.icon}</span>
+    <p class="text-sm font-semibold text-navy">${d.title}</p>
+    <span class="mt-1 text-xs bg-accent text-white px-3 py-1 rounded-full">Buka Folder</span>
+  </a>
+`).join('');
+
+// ===== Galeri foto kegiatan (ganti link di array ini dengan foto Anda) =====
+const galleryPhotos = Array.from({length:20}, (_,i)=> `https://picsum.photos/seed/ibsrsajt${i+1}/900/600`);
+let galIndex = 0;
+const galImg = document.getElementById('galleryImg');
+const galCounter = document.getElementById('galleryCounter');
+function showGallery(i){
+  galImg.style.opacity = 0;
+  setTimeout(()=>{
+    galImg.src = galleryPhotos[i];
+    galCounter.textContent = `${i+1} / ${galleryPhotos.length}`;
+    galImg.style.opacity = 1;
+  }, 300);
+}
+showGallery(0);
+setInterval(()=>{
+  galIndex = (galIndex+1) % galleryPhotos.length;
+  showGallery(galIndex);
+}, 4000);
+
+// ===== Pencarian global sederhana =====
+document.getElementById('globalSearch').addEventListener('input', (e)=>{
+  const q = e.target.value.toLowerCase().trim();
+  document.querySelectorAll('.team-card, .doc-card').forEach(el=>{
+    const name = el.getAttribute('data-name') || '';
+    el.classList.toggle('hidden-search', q.length>0 && !name.includes(q));
+  });
+});
+</script>
+</body>
+</html>
